@@ -7,11 +7,17 @@ public class Calendar0 {
 	// Gets a year (command-line argument), and tests the functions isLeapYear and nDaysInMonth.
 	public static void main(String args[]) {
 		int year = Integer.parseInt(args[0]);
+		
 		isLeapYearTest(year);
-		nDaysInMonthTest(year);
+
+		for (int i =1; i<=12; i++)
+		{
+		System.out.println("Month " + i + " has " + nDaysInMonth(i, year) + " days"); 
+		}
+
 	}
 		 
-	// Tests the isLeapYear function.
+	
 	private static void isLeapYearTest(int year) {
 		String commonOrLeap = "common";
 		if (isLeapYear(year)) {
@@ -20,23 +26,44 @@ public class Calendar0 {
 		System.out.println(year + " is a " + commonOrLeap + " year");  
 	}
 
-	// Tests the nDaysInMonth function.
-	private static void nDaysInMonthTest(int year) {
-		// Replace this comment with your code
-	}
+	
+	private static void nDaysInMonthTest(int month, int year) {
+    int numberToTest = nDaysInMonth(month,year);
+	System.out.println(month + " has " + numberToTest + " days");	}
 
-	// Returns true if the given year is a leap year, false otherwise.
-	public static boolean isLeapYear(int year) {
-	    // Replace the following statement with your code
-		return false;
+	
+	public static boolean isLeapYear(int year) {    
+		boolean isLeapYear;
+      // Checks if the year is divisible by 400       
+		isLeapYear = ((year % 400) == 0);
+      // Then checks if the year is divisible by 4 but not by 100      
+		isLeapYear = isLeapYear || (((year % 4) == 0) && ((year % 100) != 0));
+		return isLeapYear;
 	}
 	 
-	// Returns the number of days in the given month and year.
-	// April, June, September, and November have 30 days each.
-	// February has 28 days in a common year, and 29 days in a leap year.
-	// All the other months have 31 days.
-	public static int nDaysInMonth(int month, int year) {
-		// Replace the following statement with your code
-		return 0;
+	
+	public static int nDaysInMonth(int month, int year) 
+	{	
+	int daysInMonth;
+	if (month == 4 || month == 6 || month == 9 || month == 11) 
+	{
+    daysInMonth = 30;
+    }
+     else if (month == 2) 
+     {
+     	if (isLeapYear(year)==true)
+     	{
+    	daysInMonth = 29;
+     	}
+     	else
+     	{
+		daysInMonth= 28;
+     	}
+     }	
+	else
+	{ 
+	daysInMonth = 31;
+	}
+	return daysInMonth;
 	}
 }
