@@ -24,7 +24,7 @@ public class UniqueChars
 
             else if(toRemove == ' ')
                 {
-                buildingString =+" ";
+                buildingString = +" ";
                 }
         }
 
